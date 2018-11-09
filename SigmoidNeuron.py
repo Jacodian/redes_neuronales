@@ -10,17 +10,18 @@ import numpy as np
 import random
 
 class SigmoidNeuron:
-
+    
     
     def __init__(self, initLearningRate,numberOfInputs):
+        self.lastOutput=0
         self.bias = random.uniform(-2.0, 2.0)
         self.learningRate=initLearningRate
         self.weights=np.random.uniform(-2.0,2.0,numberOfInputs)
            
-        
-    def activate(self, inputData):
-        
-        return 1.0/np.exp(-(sum(self.weights * np.array(inputData)) + self.bias))
+            
+    def activate(self, inputData):    
+        self.lastOutput = 1.0/(1+np.exp(-(sum(self.weights * np.array(inputData)) + self.bias)))
+        return self.lastOutput
     
     def train(self,trainingSet,expectedValues):
         
