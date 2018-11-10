@@ -37,8 +37,8 @@ class NeuronLayer:
         delta=errorsArray*self.lastOutputs*(unos-self.lastOutputs)
         
         newError=np.zeros(len(self.neurons[0].weights))
+
         for i in range(len(self.neurons)):
-            
             newError=newError+self.neurons[i].weights*delta[i]
  
         return [newError,delta]
@@ -77,13 +77,15 @@ class NeuralNetwork:
         for i in range(len(inputs)):
             deltas=[]
             outputs=np.array(self.feed(inputs[i]))
-            
+
+
             error =np.array(expectedOutputs[i])-outputs
             for j in range(len(self.layers)):
                 layerActual=self.layers[-(1+j)]
-                    
                 [error,delta]=layerActual.backPropagation(error)
+                
                 deltas.insert(0,delta)
+
             auxInputs=inputs[i]
             for j in range(len(self.layers)):
                    

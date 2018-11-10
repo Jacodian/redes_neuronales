@@ -25,7 +25,7 @@ numberOfInputs=6
 numberOfLayers =5
 numberOfNeuronsPerLayer=[8,5,5,4,3]
 
-numberOfEpochs= 200
+numberOfEpochs= 150
 
 # adquisicion, normalizacion y preparacion de datos
 #esta parte solo funciona para estos datos en especifico, en caso de usar otros datos hay que procesarlos 
@@ -95,12 +95,16 @@ inputTraining, outputTraining = zip(*c)
 #se crea la red  
 nn=NeuralNetwork(initLearningRate, numberOfInputs, numberOfLayers, numberOfNeuronsPerLayer)
 #se entrena
+print("Entrenando, esto puede tomar un tiempo ...")
 start = time.time()
 result = nn.epochTrainingPrediction([inputTraining,outputTraining],[inputTest,outputTest],numberOfEpochs)
 end = time.time()
 print("time elapsed: "+str(end - start))
 plt.plot(result[0], result[1])
-plt.show
+plt.xlabel('Epoch')
+plt.ylabel('Precision')
+plt.title("Performance de la red neuronal")
+plt.show()
         
 
 
