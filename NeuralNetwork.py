@@ -99,6 +99,7 @@ class NeuralNetwork:
             self.train(trainSet[0],trainSet[1])
             total=len(validationSet[0])
             rights=0
+            
             for j in range(total):
                 result=self.feed(validationSet[0][j])
                 
@@ -106,7 +107,7 @@ class NeuralNetwork:
                 
                 if validationSet[1][j][indiceMaximo]==1:
                     rights=rights+1
-                    
+                   
             trainingResults[0].append(i)  
             trainingResults[1].append(float(rights)/total)
         return(trainingResults)

@@ -19,13 +19,13 @@ import time
 
 
 #datos de la red neuronal
-initLearningRate=0.05
+initLearningRate=0.02
 numberOfInputs=6
 #las dos siguientes contienen a las hidden layers mas la capa de output
-numberOfLayers =5
-numberOfNeuronsPerLayer=[8,5,5,4,3]
+numberOfLayers =2
+numberOfNeuronsPerLayer=[8,3]
 
-numberOfEpochs= 150
+numberOfEpochs= 500
 
 # adquisicion, normalizacion y preparacion de datos
 #esta parte solo funciona para estos datos en especifico, en caso de usar otros datos hay que procesarlos 
